@@ -1,0 +1,1344 @@
+{
+	"info": {
+		"_postman_id": "487c431e-44b2-4509-b22d-9ea9cbe3f103",
+		"name": "publicationWorkflow",
+		"description": "All Calls for the publicationWorkflow API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/roles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Testadmin\",\n\t\"email\": \"admin@test.org\",\n\t\"roles\": [\"Admin\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/roles/nKyZQhppxOZPqhhWFqKgIoqT/token",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"roles",
+						"nKyZQhppxOZPqhhWFqKgIoqT",
+						"token"
+					]
+				},
+				"description": "make new user POST /roles"
+			},
+			"response": []
+		},
+		{
+			"name": "/roles/<identifier>/token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications"
+					]
+				},
+				"description": "Get new Token"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications"
+					]
+				},
+				"description": "get publications"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"datasetId\": 34,\n\t\"invocationId\": \"somelongstringwithoutanythingoodinit\",\n\t\"datasetDisplayName\": \"Title of the Data Publication\",\n\t\"datasetGlobalId\": \"10.342343/darus-342\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"datasetId\": 34,\n\t\"datasetDisplayName\": \"Title of the Data Publication\",\n\t\"datasetGlobalId\": \"10.342343/darus-342\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications"
+					]
+				},
+				"description": "Missing information"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"datasetId\": 34,\n\t\"datasetDisplayName\": \"Title of the Data Publication\",\n\t\"datasetGlobalId\": \"10.342343/darus-342\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications"
+					]
+				},
+				"description": "missing information2"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBdXRob3IiXSwibmFtZSI6IkF1dG9yIiwiZW1haWwiOiJhdXRvckBwdWJsaWNhdGlvbldvcmtmbG93LmRlIiwiaWQiOiIyIiwiZXhwIjoxNTkwNTA1NTg2fQ.04ee2UTPDTKX_XWKy9E_VfK7De-2FE76_b7h0xWiEkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/giveok",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBdXRob3IiXSwibmFtZSI6IkF1dG9yIiwiZW1haWwiOiJhdXRvckBwdWJsaWNhdGlvbldvcmtmbG93LmRlIiwiaWQiOiIyIiwiZXhwIjoxNTkwNTA1NTg2fQ.04ee2UTPDTKX_XWKy9E_VfK7De-2FE76_b7h0xWiEkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/giveok",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"giveok"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks"
+					]
+				},
+				"description": "missing information"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"some more details in the description, please\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks"
+					]
+				},
+				"description": "Adding feedback as a curator"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"text\": \"changed text of some more details in the description, please\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks/70",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks",
+						"70"
+					]
+				},
+				"description": "change text of feedback as a curator"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks/{fid}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks/70",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks",
+						"70"
+					]
+				},
+				"description": "delete feedback as a curator"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/feedbacks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/feedbacks/69",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"feedbacks",
+						"69"
+					]
+				},
+				"description": "get feedbacks as a curator"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/export",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/export",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"export"
+					]
+				},
+				"description": "try to export publication as a author"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/export",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/export",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"export"
+					]
+				},
+				"description": "try to export unpublished publication"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/publish",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/publish",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"publish"
+					]
+				},
+				"description": "publish publication as an admin"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}/export",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63/export",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63",
+						"export"
+					]
+				},
+				"description": "export publication as an admin"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63"
+					]
+				},
+				"description": "delete publication as an admin"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJDdXJhdG9yIl0sIm5hbWUiOiJDdXJhdG9yIiwiZW1haWwiOiJjdXJhdG9yQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjMiLCJleHAiOjE1OTA1MDU1ODZ9.1QB-MMqs4u5NGDRgObYprb5GKPZjoORWvtXpcwEBr44",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63"
+					]
+				},
+				"description": "try to delete publication as a curator"
+			},
+			"response": []
+		},
+		{
+			"name": "/publications/{pid}",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24bdca0c-22ce-4a38-95cb-97683268eb0d",
+						"exec": [
+							"pm.test(\"Status code is 403\", function () {",
+							"    pm.response.to.have.status(403);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBdXRob3IiXSwibmFtZSI6IkF1dG9yIiwiZW1haWwiOiJhdXRvckBwdWJsaWNhdGlvbldvcmtmbG93LmRlIiwiaWQiOiIyIiwiZXhwIjoxNTkwNTA1NTg2fQ.04ee2UTPDTKX_XWKy9E_VfK7De-2FE76_b7h0xWiEkQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"done\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://51.105.249.35/publications/63",
+					"protocol": "http",
+					"host": [
+						"51.105.249.35"
+					],
+					"path": [
+						"publications",
+						"63"
+					]
+				},
+				"description": "try to delete a publication as an author"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBZG1pbiJdLCJuYW1lIjoiQWRtaW4iLCJlbWFpbCI6ImFkbWluQHB1YmxpY2F0aW9uV29ya2Zsb3cuZGUiLCJpZCI6IjEiLCJleHAiOjE1OTA1MDU1ODZ9.1m_V9lEjIhexagHAVFpXEAD5wj7w7ClU0EiOk3WKG6Y",
+				"type": "string"
+			}
+		]
+	},
+	"protocolProfileBehavior": {}
+}
