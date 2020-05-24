@@ -81,10 +81,10 @@ Expectable Errors:
 | 500 | internal server error | an error on server side prevented the response to the request|
 
 ### Authentification
-The API uses Java Web Tokens (JWT) for Authentication. As a registered user, you can get or renew your Token with the GET /token/<string:identifier> Endpoint, using your identifier.
+The API uses JSON Web Tokens (JWT) for Authentication. As a registered user, you can get or renew your Token with the GET /token/<string:identifier> Endpoint, using your identifier.
 
 Add this token as a bearer token to the "Authorization"-Header. 
 
-´´´Authorization: bearer <token>```
+```Authorization: bearer <token>```
 
 
