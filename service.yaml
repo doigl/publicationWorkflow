@@ -624,4 +624,729 @@ host: virtserver.swaggerhub.com
 schemes:
  - https
 # Added by API Auto Mocking Plugin
+basePath: /doigl/Publicationworkflow/1.0.0swagger: '2.0'
+info:
+  description: A Flask-API to handle publications of research data
+  version: 1.0.0
+  title: PublicationWorkflow
+  # put the contact info for your development or API team
+  contact:
+    email: fokus@izus.uni-stuttgart.de
+
+  license:
+    name: MIT
+    url: https://mit-license.org/
+
+# tags are used for organizing operations
+tags:
+- name: admins
+  description: Calls only available for administrators
+- name: curators
+  description: Calls available for curators of data publications
+- name: authors
+  description: Calls available for the author of a data publication
+  
+paths:
+  /roles:
+    post:
+      tags:
+      - admins
+      summary: adds new user
+      operationId: add_user
+      produces:
+      - application/json
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              person:
+                type: object
+                $ref: '#/definitions/Role'
+              identifier:
+                type: string
+                example: 2343oop3op2kep3
+        400:
+          description: required information missing 
+        422:
+          description: unprocessable, user could not be added
+  
+  /roles/{identifier}/token:
+    get:
+      summary: get (new) JSON Web Token for authentication
+      operationId: get_token
+      tags:
+      - admins
+      - curators
+      - authors
+      produces:
+      - application/json
+      parameters:
+      - name: identifier
+        in: path
+        description: identifier of registered user
+        type: string
+        required: True
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              token:
+                type: string
+                description: JWT token
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        422:
+          description: unprocessable, user could not be added      
+  /publications:
+    get:
+      tags: 
+      - admins
+      summary: gets all available publications
+      operationId:  get_all_publications
+      produces:
+      - application/json
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publications:
+                type: array
+                items:
+                  $ref: '#/definitions/Publication'
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing      
+    post:
+      tags:
+      - admins
+      summary: add a new publication
+      operationId: new_publication
+      parameters:
+      - name: publication
+        in: body
+        description: The publication to create
+        schema:
+          type: object
+          $ref: '#/definitions/Publication'
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                type:
+                  $ref: '#/definitions/Publication'
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        422:
+          description: unprocessable, user could not be added      
+  /publications/{pid}:
+    get:
+      tags:
+      - admins
+      - curators
+      - authors
+      summary: get the publication with id {pid}
+      operationId: get_publication
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                type: object
+                $ref: '#/definitions/Publication'
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        422:
+          description: unprocessable, user could not be added
+    delete:
+      tags:
+      - admins
+      summary: deletes the publication with id {pid}
+      operationId: delete_publication
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              deleted:
+                type: integer
+                description: ID of the deleted publication
+                example: 22
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: publication not found
+        422:
+          description: unprocessable, publication could not be deleted       
+  /publications/{pid}/giveok:
+    patch:
+      tags:
+      - authors
+      summary: indicates, that author has finished checklist
+      operationId: giveok2publication
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                type: object
+                $ref: '#/definitions/Publication'
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: required information missing 
+        409:
+          description: WorkflowError, giving ok to already published or exported publication 
+        422:
+          description: unprocessable, user could not be added    
+  /publications/{pid}/publish:
+    patch:
+      tags:
+      - admins
+      summary: publishes a data publication
+      operationId: publish_publication
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                type: object
+                $ref: '#/definitions/Publication'
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: required information missing 
+        409:
+          description: WorkflowError, giving ok to already published or exported publication 
+        422:
+          description: unprocessable, user could not be added    
+  /publications/{pid}/export:
+    patch:
+      tags:
+      - admins
+      summary: exports a data publication
+      operationId: export_publication
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                type: object
+                $ref: '#/definitions/Publication'
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: required information missing 
+        409:
+          description: WorkflowError, trying to export publication that is not published 
+        422:
+          description: unprocessable, user could not be added    
+  /publications/{pid}/feedbacks:
+    get:
+      tags:
+      - authors
+      - curators
+      summary: returns all feedback for publication with id {pid}
+      operationId: get_feedbacks_of_publication
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                $ref: '#/definitions/Publication'
+              feedbacks:
+                type: array
+                items:
+                  $ref: '#/definitions/Feedback'
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: publication not found
+    post:
+      tags:
+      - curators
+      summary: adds a new feedback to publication with id {pid}
+      operationId: add_feedback_to_publication
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      - in: body
+        name: feedback
+        $ref: '#/definitions/FeedbackShort'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              publication:
+                $ref: '#/definitions/Publication'
+              feedbacks:
+                type: array
+                items:
+                  $ref: '#/definitions/Feedback'
+        400:
+          description: text is missing in JSON-Body 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: publication not found
+        422:
+          description: unprocessable, feedback could not be saved in database
+  /publications/{pid}/feedbacks/{fid}:
+    get:
+      tags:
+      - authors
+      - curators
+      summary: gets a specific feedback
+      operationId: get_feedback
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        description: ID of the publication
+        type: integer
+        required: true
+      - in: path
+        name: fid
+        description: ID of the feedback
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              feedback:
+                $ref: '#/definitions/Feedback'
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: publication or feedback not found 
+        409:
+          description: conflict, feedback does not belong to publication
+    patch:
+      tags:
+      - curators
+      summary: changes the text of a specific feedback
+      operationId: change_feedback
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      - in: path
+        name: fid
+        description: ID of the feedback
+        type: integer
+        required: true
+      - in: body
+        name: feedback
+        schema:
+          $ref: '#/definitions/FeedbackShort'
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              changed:
+                type: integer
+                description: id of the changed feedback
+              feedback:
+                $ref: '#/definitions/Feedback'
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: publication or feedback not found 
+        409:
+          description: conflict, feedback does not belong to publication
+        422:
+          description: unprocessable, feedback could not be updated
+    delete:
+      tags:
+      - curators
+      summary: deletes a specific feedback
+      operationId: delete_feedback
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      - in: path
+        name: fid
+        description: ID of the feedback
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              deleted:
+                type: integer
+                description: id of the deleted feedback
+                example: 25
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        422:
+          description: unprocessable, user could not be added  
+  /publications/{pid}/feedbacks/{fid}/done:
+    patch:
+      tags:
+      - authors
+      summary: marks a feedback as done
+      operationId: mark_feedback_as_done
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: pid
+        type: integer
+        required: true
+      - in: path
+        name: fid
+        type: integer
+        required: true
+      responses:
+        200:
+          description: success
+          schema:
+            type: object
+            properties:
+              success:
+                type: boolean
+                example: True
+              changed:
+                type: integer
+                description: id of the changed feedback
+              feedback:
+                $ref: '#/definitions/Feedback'
+        400:
+          description: required information missing 
+        401:
+          description: authentication missing 
+        403:
+          description: not allowed, required permission missing 
+        404:
+          description: publication or feedback not found 
+        409:
+          description: conflict, feedback does not belong to publication
+        422:
+          description: unprocessable, feedback could not be updated
+  /inventory:
+    get:
+      tags:
+      - developers
+      summary: searches inventory
+      operationId: searchInventory
+      description: |
+        By passing in the appropriate options, you can search for
+        available inventory in the system
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchString
+        description: pass an optional search string for looking up inventory
+        required: false
+        type: string
+      - in: query
+        name: skip
+        description: number of records to skip for pagination
+        type: integer
+        format: int32
+        minimum: 0
+      - in: query
+        name: limit
+        description: maximum number of records to return
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 50
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/InventoryItem'
+        400:
+          description: bad input parameter
+    post:
+      tags:
+      - admins
+      summary: adds an inventory item
+      operationId: addInventory
+      description: Adds an item to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: inventoryItem
+        description: Inventory item to add
+        schema:
+          $ref: '#/definitions/InventoryItem'
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+definitions:
+  Publication:
+    type: object
+    required:
+    - id
+    - invocationId
+    - displayName
+    - doi
+    properties:
+      id:
+        type: integer
+        example: 22
+      invocationId:
+        type: string
+        example: 3024302orek2opkre02klepsd32
+      doi:
+        type: string
+        example: 10.34243/darus-883
+      displayName:
+        type: string
+        example: Title of a grand new data publication
+      status: 
+        type: string
+        example: finished
+      okAuthor:
+        type: string
+        format: date-time
+        example: 20.08.2020
+      published:
+        type: string
+        format: date-time
+        example: 29.08.2020
+      exported:
+        type: string
+        format: date-time
+        example: 30.08.2020
+  Feedback:
+    type: object
+    required:
+    - id
+    - text
+    - done
+    properties:
+      id:
+        type: integer
+        example: 22
+      text:
+        type: string
+        example: try to be more specific in the description
+      done:
+        type: boolean
+        example: False
+      publication:
+        $ref: '#/definitions/Publication'
+      author:
+        $ref: '#/definitions/Role'
+FeedbackShort:
+    type: object
+    required:
+    - text
+    properties:
+      text:
+        type: string
+        example: try to be more specific in the description
+  Role:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id:
+        type: integer
+        example: 22
+      name:
+        type: string
+        example: John Doe
+      identifier:
+        type: string
+        example: keoriofkeowfme
+      roles:
+        type: array
+        items: 
+          type: string
+          example: 'Curator'
+        example: ['Author', 'Admin']
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+# basePath: /
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
 basePath: /doigl/Publicationworkflow/1.0.0
