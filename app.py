@@ -134,7 +134,7 @@ def new_publication(payload):
 
 @app.route('/publications/<int:pub_id>', methods=["DELETE"])
 @requires_auth('delete:publication')
-def deletePublication(payload, pub_id):
+def delete_publication(payload, pub_id):
     publication = Publication.query.get(pub_id)
     if publication is None:
         abort(404)
